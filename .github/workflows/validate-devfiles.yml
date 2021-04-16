@@ -38,4 +38,4 @@ jobs:
     - name: Build odo
       run: cd odo && make
     - name: Validate the devfile stacks
-      run: odo/odo .ci/test.sh
+      run: .ci/test.sh odo/odo 
