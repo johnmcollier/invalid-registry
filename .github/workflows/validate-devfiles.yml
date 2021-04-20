@@ -40,4 +40,4 @@ jobs:
     - name: Test odo
       run: ls && $(realpath odo/odo)
     - name: Validate the devfile stacks
-      run: .ci/test.sh $(realpath odo)
+      run: .ci/test.sh $(realpath odo/odo)
