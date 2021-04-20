@@ -36,8 +36,8 @@ jobs:
         repository: openshift/odo
         path: odo
     - name: Build odo
-      run: cd odo && make && chmod +x ./odo && cp ./odo ../odo-binary
+      run: cd odo && make
     - name: Test odo
-      run: ls && ./odo-binary
+      run: ls && $(realpath odo/odo)
     - name: Validate the devfile stacks
-      run: .ci/test.sh ./odo-binary 
+      run: .ci/test.sh $(realpath odo)
