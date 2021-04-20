@@ -26,6 +26,7 @@ jobs:
       with:
         minikube version: 'v1.16.0'
         kubernetes version: 'v1.19.2'
+        driver: 'docker'
     - name: Enable ingress on Minikube
       run: minikube addons enable ingress
     - name: Setup Go environment
