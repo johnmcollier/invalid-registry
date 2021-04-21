@@ -29,18 +29,11 @@ jobs:
         driver: 'docker'
     - name: Enable ingress on Minikube
       run: minikube addons enable ingress
-    - name: Setup Go environment
-      uses: actions/setup-go@v2
+    - name: Install CLI tools
+      uses: redhat-actions/openshift-tools-installer@v1
       with:
-        go-version: 1.13
-    - name: Checkout odo repo
-      uses: actions/checkout@v2
-      with:
-        repository: openshift/odo
-        path: odo
-    - name: Build odo
-      run: cd odo && make
-    - name: Test odo
-      run: ls && $(realpath odo/odo)
+        # Installs the latest release of odo with the major version 2, and the minor version 0.
+        # This would install odo 2.0.3, but not odo 2.1.0.
+        odo: "2.1"
     - name: Validate the devfile stacks
-      run: tests/test_minikube.sh $(realpath odo/odo)
+      run: tests/test_minikube.sh odo
